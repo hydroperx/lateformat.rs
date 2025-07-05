@@ -13,24 +13,24 @@ use maplit::hashmap;
 let user_string: String = "some user string: {id}".into();
 assert_eq!(
     "some user string: x",
-    user_string.hydroperx_lateformat(hashmap!{"id".into() => "x".into()})
+    user_string.lateformat(hashmap!{"id".into() => "x".into()})
 );
 
 let user_string: String = r#"some user string: {"id"}"#.into();
 assert_eq!(
     "some user string: id",
-    user_string.hydroperx_lateformat(hashmap!{"id".into() => "x".into()})
+    user_string.lateformat(hashmap!{"id".into() => "x".into()})
 );
 
 let user_string: String = r#"some user string: {  "id"  }"#.into();
 assert_eq!(
     "some user string: id",
-    user_string.hydroperx_lateformat(hashmap!{"id".into() => "x".into()})
+    user_string.lateformat(hashmap!{"id".into() => "x".into()})
 );
 
 let user_string: String = "some user string: {id}".into();
 assert_eq!(
     "some user string: None",
-    user_string.hydroperx_lateformat(hashmap!{})
+    user_string.lateformat(hashmap!{})
 );
 ```
