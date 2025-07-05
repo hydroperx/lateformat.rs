@@ -31,18 +31,18 @@ use lazy_regex::*;
 /// use hydroperx_lateformat::LateFormat;
 /// use maplit::hashmap;
 /// let user_string: String = "some user string: {id}".into();
-/// assert_eq!("some user string: x", user_string.hydroperx_lateformat(hashmap!{"id".into() => "x".into()}));
+/// assert_eq!("some user string: x", user_string.lateformat(hashmap!{"id".into() => "x".into()}));
 /// 
 /// // if a string contains curly braces, they must be escaped.
 /// let escaped: String = r#"{"{"}"#.into();
 /// ```
 ///
 pub trait LateFormat {
-    fn hydroperx_lateformat(&self, arguments: HashMap<String, String>) -> String;
+    fn lateformat(&self, arguments: HashMap<String, String>) -> String;
 }
 
 impl LateFormat for &str {
-    fn hydroperx_lateformat(&self, arguments: HashMap<String, String>) -> String {
+    fn lateformat(&self, arguments: HashMap<String, String>) -> String {
         regex_replace_all!(
             r#"(?x)
             \{\s*(
@@ -62,8 +62,8 @@ impl LateFormat for &str {
 }
 
 impl LateFormat for String {
-    fn hydroperx_lateformat(&self, arguments: HashMap<String, String>) -> String {
-        self.as_str().hydroperx_lateformat(arguments)
+    fn lateformat(&self, arguments: HashMap<String, String>) -> String {
+        self.as_str().lateformat(arguments)
     }
 }
 
@@ -75,12 +75,12 @@ mod test {
     #[test]
     fn formatting() {
         let user_string: String = "some user string: {id}".into();
-        assert_eq!("some user string: x", user_string.hydroperx_lateformat(hashmap!{"id".into() => "x".into()}));
+        assert_eq!("some user string: x", user_string.lateformat(hashmap!{"id".into() => "x".into()}));
         let user_string: String = r#"some user string: {"id"}"#.into();
-        assert_eq!("some user string: id", user_string.hydroperx_lateformat(hashmap!{"id".into() => "x".into()}));
+        assert_eq!("some user string: id", user_string.lateformat(hashmap!{"id".into() => "x".into()}));
         let user_string: String = r#"some user string: {  "id"  }"#.into();
-        assert_eq!("some user string: id", user_string.hydroperx_lateformat(hashmap!{"id".into() => "x".into()}));
+        assert_eq!("some user string: id", user_string.lateformat(hashmap!{"id".into() => "x".into()}));
         let user_string: String = "some user string: {id}".into();
-        assert_eq!("some user string: None", user_string.hydroperx_lateformat(hashmap!{}));
+        assert_eq!("some user string: None", user_string.lateformat(hashmap!{}));
     }
 }
