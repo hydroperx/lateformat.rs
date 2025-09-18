@@ -1,9 +1,9 @@
 [package]
-name = "fairyvoid-lateformat"
-version = "1.0.0"
+name = "hydroperx-lateformat"
+version = "1.0.1"
 edition = "2021"
-authors = ["fairyvoid <fairepoint@gmail.com>"]
-repository = "https://github.com/fairyvoid/lateformat.rs"
+authors = ["hydroperx <hydroperfox@gmail.com>"]
+repository = "https://github.com/hydroperx/lateformat.rs"
 license = "Apache-2.0"
 description = "Late formatting of string parameters"
 

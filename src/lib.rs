@@ -28,7 +28,7 @@ use lazy_regex::*;
 /// # Example
 /// 
 /// ```
-/// use fairyvoid_lateformat::LateFormat;
+/// use hydroperx_lateformat::LateFormat;
 /// use maplit::hashmap;
 /// let user_string: String = "some user string: {id}".into();
 /// assert_eq!("some user string: x", user_string.lateformat(hashmap!{"id".into() => "x".into()}));

@@ -7,7 +7,7 @@ This is an alternative to using complex template engines.
 ## Example
 
 ```rust
-use fairyvoid_lateformat::LateFormat;
+use hydroperx_lateformat::LateFormat;
 use maplit::hashmap;
 
 let user_string: String = "some user string: {id}".into();
